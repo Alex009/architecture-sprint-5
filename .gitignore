@@ -333,3 +333,9 @@ $RECYCLE.BIN/
 
 rasa/.rasa
 rasa-cache
+
+terraform/.terraform
+terraform/.terraform.lock.hcl
+terraform/authorized_key.json
+terraform/yandex.tfvars
+terraform/terraform.tfstate
