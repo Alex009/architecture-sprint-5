@@ -2,8 +2,7 @@ FROM rasa/rasa:3.5.2-full
 
 USER root
 
-RUN pip install rasa[transformers] \
-  rasa[spacy] \
-  python -m spacy download ru_core_news_sm
+RUN pip install rasa[transformers] rasa[spacy] \
+  && python -m spacy download ru_core_news_sm
 
 USER 1001
