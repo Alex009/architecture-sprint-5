@@ -1,16 +1,17 @@
 services:
   rasa:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile.rasa
+      dockerfile: Dockerfile.rasa.ubuntu
     volumes:
-      - ./rasa:/rasa-home
-      - ./rasa-cache:/app/.cache
+      - ./rasa:/rasa-home:r
+      - ./rasa-cache:/app/.cache:rw
     ports:
       - 5005:5005
     command: run --debug --enable-api -p 5005 -m /rasa-home/models --cors "*"
+    user: "${UID}:${GID}"
   web:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.web
       args:
