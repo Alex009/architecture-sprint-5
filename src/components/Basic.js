@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { IoMdSend } from "react-icons/io";
 import { BiBot, BiUser } from "react-icons/bi";
 
+const rasaUrl = process.env.REACT_APP_RASA_URL || "http://localhost:5005";
+
 function Basic() {
   // Состояние для хранения истории чата
   const [chat, setChat] = useState([]);
@@ -38,7 +40,7 @@ function Basic() {
 
   // Функция для отправки сообщения на сервер Rasa и получения ответа
   const rasaAPI = async function handleClick(name, msg) {
-    await fetch("http://localhost:5005/webhooks/rest/webhook", {
+    await fetch(`${rasaUrl}/webhooks/rest/webhook`, {
       method: "POST",
       headers: {
         Accept: "application/json",
